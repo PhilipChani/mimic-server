@@ -30,7 +30,7 @@ RUN apt-get update && apt-get install -y nodejs npm && rm -rf /var/lib/apt/lists
 
 # # Install dependencies in assets directory
 WORKDIR /app/assets
-RUN npm install
+#RUN npm install
 
 # Return to app directory
 WORKDIR /app
@@ -41,8 +41,11 @@ RUN mix phx.digest
 RUN mix assets.deploy
 
 
-ENV SECRET_KEY_BASE="$(mix phx.gen.secret)"
-ENV DATABASE_URL=ecto://postgres:8c07edad4b213d80@srv-captain--mimic-database/mimic
+# Read environment variables from host
+ARG SECRET_KEY_BASE
+ARG DATABASE_URL
+ENV SECRET_KEY_BASE=$SECRET_KEY_BASE
+ENV DATABASE_URL=$DATABASE_URL
 ENV PHX_SERVER=true
 ENV MIX_ENV=prod
 
