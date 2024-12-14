@@ -13,14 +13,15 @@ config :mimic_server,
 
 # Configures the endpoint
 config :mimic_server, MimicServerWeb.Endpoint,
-  url: [host: "localhost"],
+  url: [host: "mimic.abakula.com"],
   adapter: Bandit.PhoenixAdapter,
   render_errors: [
     formats: [html: MimicServerWeb.ErrorHTML, json: MimicServerWeb.ErrorJSON],
     layout: false
   ],
   pubsub_server: MimicServer.PubSub,
-  live_view: [signing_salt: "46Nl81sv"]
+  live_view: [signing_salt: "46Nl81sv"],
+  check_origin: ["https://mimic.abakula.com"]
 
 # Configures the mailer
 #
