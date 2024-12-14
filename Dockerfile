@@ -30,7 +30,7 @@ RUN apt-get update && apt-get install -y nodejs npm && rm -rf /var/lib/apt/lists
 
 # # Install dependencies in assets directory
 WORKDIR /app/assets
-RUN npm install
+#RUN npm install
 
 # Return to app directory
 WORKDIR /app
