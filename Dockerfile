@@ -40,6 +40,7 @@ RUN mix deps.get
 RUN mix phx.digest
 RUN mix assets.deploy
 
+
 # Read environment variables from host
 ARG SECRET_KEY_BASE
 ARG DATABASE_URL
